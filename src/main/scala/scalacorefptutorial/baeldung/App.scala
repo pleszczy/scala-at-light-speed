@@ -1,8 +1,8 @@
 package org.scalaatlightspeed
 package scalacorefptutorial.baeldung
 
-import baeldung.monad.LazyMonad.Lazy
 import parts.Part2
+import monad.LazyMonad.Lazy
 
 import scala.util.chaining.*
 

@@ -1,6 +1,5 @@
-package org.scalaatlightspeed.baeldung
-package monad
-//scala-tutorials/scala-core-fp/src/main/scala/com/baeldung/scala/monad/LazyMonad.scala
+package org.scalaatlightspeed
+package scalacorefptutorial.baeldung.monad
 
 // source: https://github.com/Baeldung/scala-tutorials/blob/master/scala-core-fp/src/main/scala/com/baeldung/scala/monad/LazyMonad.scala
 object LazyMonad {
