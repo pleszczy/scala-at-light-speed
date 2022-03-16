@@ -1,8 +1,6 @@
 package org.scalaatlightspeed
 
 
-import baeldung.monad.LazyMonad
-import baeldung.monad.LazyMonad.Lazy
 import parts.Part2
 
 object App {
