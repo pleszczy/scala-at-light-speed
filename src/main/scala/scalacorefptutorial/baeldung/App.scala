@@ -4,6 +4,8 @@ package scalacorefptutorial.baeldung
 import baeldung.monad.LazyMonad.Lazy
 import parts.Part2
 
+import scala.util.chaining.*
+
 object App {
 
   @main def main(): Unit = {
@@ -12,16 +14,15 @@ object App {
   }
 
   def monads(): Unit = {
-    val value: Lazy[String] = Lazy("12")
-    val value1: Lazy[String] = value.map(it => it + "1")
-    val value2: Lazy[String] = value.map {
-      it =>
-        println(s"lazy evaluated side effect => $it")
-        it
-    }
-    val value3: Lazy[String] = value2.flatMap(it => Lazy(it))
-    println(value1.get)
-    println(value2.get)
+    val aMonad = Lazy("12")
+      .map(it => it.pipe(it => it.toLong * 12).pipe(it => it / 2))
+      .map(it => {
+        println(s"executing side effect => $it * 2")
+        it * 2
+      })
+      .tap(_ => println("Still constructing, still lazy"))
+      .flatMap(it => Lazy(it))
+    println(aMonad.get)
   }
 
 }
