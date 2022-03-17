@@ -41,7 +41,13 @@ object Part4 {
     printlnMany(incA(10), incB(11), incC(12), incD(13), incE(14))
     printlnMany(concatA(4, 2), concatB(4, 2), concatC(4, 2))
     printlnMany(higherOrderFnA(12, incA, incC), higherOrderFnB(12, inc))
-    println(List(10, 11, 12, 13, 14).map(incComposed).filter(_ % 2 == 0))
-    println(List(10, 11, 12, 13, 14).flatMap((it: Int) => List(incComposed(it))))
+    val composeAndFilter = List(10, 11, 12, 13, 14).map(incComposed).filter(_ % 2 == 0)
+    println(composeAndFilter)
+    val compose = List(10, 11, 12, 13, 14).flatMap((it: Int) => List(incComposed(it)))
+    println(compose)
+    val zippingNumberWithLettersA = List(10, 11, 12, 13, 14).flatMap(number => List("a", "b", "c", "d", "e").map(letter => s"$number-$letter"))
+    println(zippingNumberWithLettersA)
+    val zippingNumberWithLettersB = List(10, 11, 12, 13, 14).zip(List("a", "b", "c", "d", "e"))
+    println(zippingNumberWithLettersA)
   }
 }
