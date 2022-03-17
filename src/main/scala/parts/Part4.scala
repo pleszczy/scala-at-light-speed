@@ -41,13 +41,48 @@ object Part4 {
     printlnMany(incA(10), incB(11), incC(12), incD(13), incE(14))
     printlnMany(concatA(4, 2), concatB(4, 2), concatC(4, 2))
     printlnMany(higherOrderFnA(12, incA, incC), higherOrderFnB(12, inc))
-    val composeAndFilter = List(10, 11, 12, 13, 14).map(incComposed).filter(_ % 2 == 0)
-    println(composeAndFilter)
-    val compose = List(10, 11, 12, 13, 14).flatMap((it: Int) => List(incComposed(it)))
-    println(compose)
-    val zippingNumberWithLettersA = List(10, 11, 12, 13, 14).flatMap(number => List("a", "b", "c", "d", "e").map(letter => s"$number-$letter"))
-    println(zippingNumberWithLettersA)
-    val zippingNumberWithLettersB = List(10, 11, 12, 13, 14).zip(List("a", "b", "c", "d", "e"))
-    println(zippingNumberWithLettersA)
+
+    val numbers = List(10, 11, 12, 13, 14)
+    val letters = List("a", "b", "c", "d", "e")
+
+    val composeAndFilter = numbers.map(incComposed).filter(_ % 2 == 0)
+    val compose = numbers.flatMap((it: Int) => List(incComposed(it)))
+
+    val zippingNumbersWithLettersA = numbers.flatMap(number => letters.map(letter => s"$number-$letter"))
+    val zippingNumbersWithLettersB = numbers.zip(letters)
+
+    val zippingNumberWithLettersC = for
+      number <- numbers
+      letter <- letters
+    yield s"$number-$letter"
+
+    println(numbers.head)
+    println(numbers.tail)
+    println(9 :: numbers)
+    println(numbers :+ 15)
+
+    // sequences - just like ArrayList
+    val aSequence: Seq[Int] = Seq(1, 2, 3)
+
+    // a fast sequence implementation
+    val aVector: Vector[Int] = Vector(1, 2, 3)
+
+    val aSet: Set[Int] = Set(2, 2, 2)
+    println(aSet.contains(2))
+    println((aSet + 5) - 2)
+
+    val aRange = 1 to 1000
+    println(aRange.filter(_ % 2 == 0))
+
+    val aTuple: (String, String, String) = ("Clojure", "Scala", "Java")
+
+    println(s"My second favorite language is ${aTuple._2}")
+
+    val aMap = Map(
+      ("Favorite language", "Clojure"),
+      "Second favorite language" -> "Scala"
+    )
+    println(aMap)
+
   }
 }
