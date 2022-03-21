@@ -61,10 +61,8 @@ object Part4 {
     println(9 :: numbers)
     println(numbers :+ 15)
 
-    // sequences - just like ArrayList
     val aSequence: Seq[Int] = Seq(1, 2, 3)
 
-    // a fast sequence implementation
     val aVector: Vector[Int] = Vector(1, 2, 3)
 
     val aSet: Set[Int] = Set(2, 2, 2)
@@ -80,9 +78,7 @@ object Part4 {
 
     val aMap = Map(
       ("Favorite language", "Clojure"),
-      "Second favorite language" -> "Scala"
-    )
+      "Second favorite language" -> "Scala")
     println(aMap)
-
   }
 }
